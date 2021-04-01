@@ -11,6 +11,7 @@ hs_err_pid*
 
 .DS_Store
 .idea
+.cache
 .gradle
 .classpath
 .project
@@ -20,7 +21,6 @@ build
 target
 node_modules
 bower_components
-public/_assets
 keystore
 *.tfstate*
 *.tfstate.*
