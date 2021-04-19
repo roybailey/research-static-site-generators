@@ -1,5 +1,4 @@
 import React from "react"
-import {css} from "@emotion/react"
 import {useStaticQuery, Link, graphql} from "gatsby"
 
 const ListLink = props => (
@@ -18,6 +17,19 @@ export default function Layout({children}) {
             title
           }
         }
+        allMarkdownRemark {
+          totalCount
+          edges {
+            node {
+              id
+              frontmatter {
+                title
+                date(formatString: "DD MMMM, YYYY")
+              }
+              excerpt
+            }
+          }
+        }
       }
     `
     )
@@ -33,9 +45,20 @@ export default function Layout({children}) {
                     <ListLink to="/about-css-modules/">About CSS Modules</ListLink>
                     <ListLink to="/contact/">Contact</ListLink>
                     <ListLink to="/my-files/">My Files</ListLink>
+                    {data.allMarkdownRemark.edges.map(({ node }) => (
+                        <ListLink key={node.id}>
+                            <h3>
+                                {node.frontmatter.title}{" "}
+                                <span> — {node.frontmatter.date}</span>
+                            </h3>
+                            <p>{node.excerpt}</p>
+                        </ListLink>
+                    ))}
                 </ul>
             </header>
             {children}
         </div>
     )
 }
+
+
