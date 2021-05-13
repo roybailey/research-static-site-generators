@@ -2,13 +2,15 @@
 
 Research static site generators
 
+STATUS:  Experimental
+
 
 ## Motivation
 
 **Mono-repo to try out a couple of static site generators for the generation of a gh-pages documentation site.**
 
 Mostly interested to avoid installing software that may be difficult or prohibited at large enterprises.
-For that reason we have looked mostly at self contained JavaScript frameworks.
+For that reason we have looked at self contained JavaScript frameworks.
 
 
 ## Getting started

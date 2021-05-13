@@ -1,19 +1,19 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Sample Docusaurus Site',
-  tagline: 'This is a Sample Docusaurus Site',
+  title: 'Docusaurus Engineering Site',
+  tagline: 'Template Engineering Site using Docusaurus',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'Roy Bailey', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'organisation', // Usually your GitHub org/user name.
+  projectName: 'docusaurus-engineering', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Engineering Site',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Site Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -24,6 +24,8 @@ module.exports = {
           position: 'left',
         },
         {to: 'blog', label: 'Blog', position: 'left'},
+        {to: 'adr/', activeBasePath: 'adr', label: 'ADR', position: 'left'},
+        {to: 'qa/', activeBasePath: 'qa', label: 'QA', position: 'left'},
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
@@ -96,6 +98,42 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+      },
+    ],
+  ],
+  plugins: [
+    /**
+     * Second Docs Folder for QA
+     */
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'qa',
+        path: 'qa',
+        routeBasePath: 'qa',
+        sidebarPath: require.resolve('./sidebarsQa.js'),
+        // ... other options
+      },
+    ],
+    /**
+     * Blog template used for ADR (Architecture Decision Review) log
+     */
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        /**
+         * Required for any multi-instance plugin
+         */
+        id: 'adr-blog',
+        /**
+         * URL route for the blog section of your site.
+         * *DO NOT* include a trailing slash.
+         */
+        routeBasePath: 'adr',
+        /**
+         * Path to data on filesystem relative to site dir.
+         */
+        path: './adr',
       },
     ],
   ],

@@ -14,6 +14,13 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'My Pages',
+      items: [
+        'hello',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Help',
       items: [
         'help/about-this-site',
